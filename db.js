@@ -1,15 +1,16 @@
 const mongoose= require('mongoose');
-
-mongoose.connect(mongoURL,{useUnifiedTopology:true, useNewUrlParser:true})
-
-var connection= mongoose.connection;
-
-connection.on('err',()=>{
-    console.log('Mongo Connection Failed');
-})
-
-connection.on('connected',()=>{
-    console.log("Mongo Connection Success");
+const mongoURL="mongodb+srv://jayesh:jayesh@cluster0.4xpbd.mongodb.net/mern-rooms"
+mongoose.connect(mongoURL,{
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useFindAndModify: true  
+}).catch((err)=>console.log('err', err))
+const connection = mongoose.connection;
+connection.once('open',()=>{
+    console.log('Database Connected')
+}).catch(err => {
+    console.log('Database Connection failed')
 })
 
 module.exports = mongoose;
