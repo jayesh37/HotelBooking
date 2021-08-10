@@ -50,5 +50,4 @@ router.post("/addroom", async(req, res) => {
      }
 });
 
-
 module.exports = router
