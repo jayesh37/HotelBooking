@@ -1,5 +1,7 @@
 const mongoose= require('mongoose');
-const mongoURL="mongodb+srv://jayesh:jayesh@cluster0.4xpbd.mongodb.net/mern-rooms"
+const dotenv = require("dotenv");
+dotenv.config();
+const mongoURL=process.env.MONGO_URL;
 mongoose.connect(mongoURL,{
     useNewUrlParser: true,
     useCreateIndex: true,

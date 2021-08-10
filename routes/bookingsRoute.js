@@ -3,12 +3,13 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
 const moment = require("moment");
+const dotenv = require("dotenv");
+dotenv.config();
 const stripe = require("stripe")(
-  "sk_test_51JMnihSDfKkuXNM1Em2K8lNsZ6bH2TKbEQeeKcrfZZsEXrwozgIgxhL0IR9tjwk1aU270xRTAsVtBbdrQKL570mL00uvMDd9LJ"
+  process.env.SECRET_KEY
 );
 const Booking = require("../models/booking");
 const Room = require("../models/room");
-
 
 router.post("/bookroom", async (req, res) => {
   const { room, fromdate, todate, totalDays, totalAmount, user , token } = req.body;
