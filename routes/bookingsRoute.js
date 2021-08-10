@@ -4,10 +4,12 @@ const mongoose = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
 const moment = require("moment");
 const stripe = require("stripe")(
-  "sk_test_51IYnC0SIR2AbPxU0EiMx1fTwzbZXLbkaOcbc2cXx49528d9TGkQVjUINJfUDAnQMVaBFfBDP5xtcHCkZG1n1V3E800U7qXFmGf"
+  "sk_test_51JMnihSDfKkuXNM1Em2K8lNsZ6bH2TKbEQeeKcrfZZsEXrwozgIgxhL0IR9tjwk1aU270xRTAsVtBbdrQKL570mL00uvMDd9LJ"
 );
 const Booking = require("../models/booking");
 const Room = require("../models/room");
+
+
 router.post("/bookroom", async (req, res) => {
   const { room, fromdate, todate, totalDays, totalAmount, user , token } = req.body;
 
@@ -61,14 +63,13 @@ router.post("/bookroom", async (req, res) => {
           console.log(error);
           return res.status(400).json({ message: error });
         }
-      } else {
+      } 
+      else {
         res.send("Payment failed");
       }
     } catch (error) {
       return res.status(400).json({ message: "Something went wrong" + error });
-    }
-
-  
+    }  
 });
 
 router.post("/cancelbooking", async (req, res) => {
