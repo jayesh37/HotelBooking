@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const db = require('./db');
-const port = process.env.PORT||7000;
+const port = process.env.PORT||5000;
 const roomsRoute= require("./routes/roomsRoute");
 const userRoute = require('./routes/userRoute')
 const bookingsRoute=require('./routes/bookingsRoute')
